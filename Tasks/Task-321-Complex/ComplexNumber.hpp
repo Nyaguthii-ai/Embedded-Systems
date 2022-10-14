@@ -33,8 +33,8 @@ public:
     
     //Copy constructors
     ComplexNumber(const ComplexNumber& c) {
-        this->imag = c.imag;
-        this->real = c.real;
+       this->imag = c.imag;
+       this->real = c.real;
     }
 
     //Destructor
