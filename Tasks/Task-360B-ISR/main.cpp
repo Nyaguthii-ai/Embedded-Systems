@@ -7,13 +7,28 @@
 #define BTN1_PIN PG_0
 #define BTN2_PIN PG_1
 
+/*
 Ticker yellowTick;
 DigitalOut  yellow_led(TRAF_YEL1_PIN);
 
 void toggleYellowISR() {
     yellow_led = !yellow_led;    
 }
-    
+*/
+
+//create a class to handle the flashing of yellow LED
+class FLASHLED{
+private:
+  DigitalOut led;
+  Timeout t;
+
+public:
+  FLASHLED(PinName gpioPin) :led(gpioPin) {
+    led = !led;
+  }
+};
+
+
 int main() {
     
     //Interrupt controlled red led using BTN1
@@ -22,12 +37,13 @@ int main() {
     //Interrupt controlled green led using BTN2    
     SwitchManager sm2(BTN2_PIN, TRAF_GRN1_PIN);    
     
-    //Simple ticker for the yellow LED
-    yellowTick.attach(&toggleYellowISR, 500ms);
-    
+    //Interrupt controlling flashing yellow LED  
+    FLASHLED FL(TRAF_YEL1_PIN);  
+
     //Now loop forever
     while(1) { 
         sleep();
         printf("count=%u\n",SwitchManager::getCount());
     };
 }
+
