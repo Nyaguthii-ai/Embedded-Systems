@@ -1,11 +1,11 @@
 #include "uop_msb.h"
 using namespace uop_msb;
 
-// Inputs
+// Inputs  
 DigitalIn SW2(BTN1_PIN);
 DigitalIn SW3(BTN2_PIN);
 
-// Outputs
+// Outputs 
 DigitalOut ledRed(TRAF_RED1_PIN);
 DigitalOut ledYel(TRAF_YEL1_PIN);
 DigitalOut ledGrn(TRAF_GRN1_PIN);

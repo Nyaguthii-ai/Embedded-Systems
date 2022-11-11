@@ -4,13 +4,13 @@ using namespace uop_msb;
 // Hardware Definitions
 #define TRAF_RED1_PIN PC_2
 
-// Inputs
+// Inputs 
 DigitalIn SW_BLUE(USER_BUTTON);
 
-// Outputs
+// Outputs 
 DigitalOut ledRed(TRAF_RED1_PIN);
 
-// Timer(modified version from Timer)
+// Timer(modified version from Timer) 
 TimerCompat tmr1;
 
 int main()
@@ -24,13 +24,13 @@ int main()
     unsigned long long dur = tmr1.read_ms();
     printf("The time taken was %llu milliseconds\n", dur);    
 
-    //Now to use a timer to implement a delay
+    //Now to use a timer to implement a delay 
     tmr1.start();
     while (true) {
         //Wait for switch press
         while (SW_BLUE == 0);
 
-        //Turn on LED
+        //Turn on LED 
         ledRed = 1;
 
         //Wait for 500ms
