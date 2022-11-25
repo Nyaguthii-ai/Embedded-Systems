@@ -40,3 +40,9 @@ void SwitchManager::waitForStabilityFalling() {
   // Look for rising edge
   switchInterrupt.rise(callback(this, &SwitchManager::waitForRising));
 }
+
+//void function to flash led
+void flash::flashled() {
+    
+    led = !led;    
+}

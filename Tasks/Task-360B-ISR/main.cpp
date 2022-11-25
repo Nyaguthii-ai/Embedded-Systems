@@ -16,19 +16,6 @@ void toggleYellowISR() {
 }
 */
 
-//create a class to handle the flashing of yellow LED
-class FLASHLED{
-private:
-  DigitalOut led;
-  Timeout t;
-
-public:
-  FLASHLED(PinName gpioPin) :led(gpioPin) {
-    led = !led;
-  }
-};
-
-
 int main() {
     
     //Interrupt controlled red led using BTN1
@@ -36,9 +23,9 @@ int main() {
 
     //Interrupt controlled green led using BTN2    
     SwitchManager sm2(BTN2_PIN, TRAF_GRN1_PIN);    
-    
-    //Interrupt controlling flashing yellow LED  
-    FLASHLED FL(TRAF_YEL1_PIN);  
+ 
+    //set yellow led to flash
+    flash yellow_led(TRAF_YEL1_PIN);  
 
     //Now loop forever
     while(1) { 

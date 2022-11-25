@@ -12,6 +12,31 @@ SWPoll switch2(BTN2_PIN, TRAF_GRN1_PIN);
 
 DigitalOut statusLED(LED1);
 
+/*
+class flash {
+private:
+    DigitalOut led;  //name handle for the leds
+    Timer tmr;       //timer for each instance
+
+public:
+   //constructor that references the led
+   flash(PinName gpioOutIn) : led(gpioOutIn){
+       tmr.reset();
+       led = !led;
+   }
+
+   //destructor to turn off led when out of scope
+   ~flash() {
+       //Shut down
+        tmr.stop();
+        tmr.reset();
+        led = 0;  
+   }
+};
+
+flash yellow_led(TRAF_YEL1_PIN);
+*/
+
 int main() {
     
     //Main uses a Timer
@@ -23,10 +48,12 @@ int main() {
     while(1) { 
 
         //Flash the yellow
+        
         if (tmr.elapsed_time() >= 500ms) {
             yellow_led = !yellow_led;   
             tmr.reset();        
         }
+        
 
         //Update state and outputs
         switch1.poll();

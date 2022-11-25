@@ -35,4 +35,26 @@ public:
   static uint32_t getCount() { return count; }
 };
 
+// class to flash led
+class flash {
+private:
+  DigitalOut led;
+  Timer tmr;       //timer for each instance
+
+  void flashled();
+
+public:
+  flash(PinName gpioPin) : led(gpioPin) {
+    // Listen for rising edge
+     tmr.reset();
+  }
+  ~flash() {
+    //Shut down
+        tmr.stop();
+        tmr.reset();
+        led = 0;  
+  }
+};
+
 #endif
+
